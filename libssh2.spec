@@ -1,7 +1,8 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/libssh2.git
 Summary:	Library implementing the SSH2 protocol
 Name:		libssh2
 Version:	1.4.3
-Release:	2
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libssh2.org/download/%{name}-%{version}.tar.gz
@@ -48,6 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -63,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libssh2.so
-%{_libdir}/libssh2.la
 %{_includedir}/libssh2*.h
 %{_mandir}/man3/libssh2_*.3*
 %{_pkgconfigdir}/libssh2.pc
